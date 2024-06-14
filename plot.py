@@ -63,5 +63,5 @@ def plot_data(files):
 
 # Main execution block
 if __name__ == '__main__':
-    files = [f'test{i}.txt' for i in range(1, 40)]  # List files from test1.txt to test40.txt
+    files = [f'data/test{i}.txt' for i in range(1, 40)]  # List files from test1.txt to test40.txt
     plot_data(files)

@@ -27,7 +27,7 @@ def log_data_to_file(ser):
                     # Close the current file if open and start a new file
                     if file:
                         file.close()
-                    file_name = f"test{file_number}.txt"
+                    file_name = f"data/test{file_number}.txt"
                     file = open(file_name, 'w')
                     file_number += 1
                     print(f"Started new log file: {file_name}")
