@@ -23,7 +23,6 @@ def plot_data(files):
     plt.figure(figsize=(12, 6))
 
     # Plot data from multiple files
-    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']  # Color for each file
     for index, file_path in enumerate(files):
         duty_cycle, tps1_readings, tps2_readings = parse_data(file_path)
         plt.plot(duty_cycle, tps1_readings, linestyle='-', color='r', label=f'{file_path} - TPS1')
@@ -37,5 +36,5 @@ def plot_data(files):
 
 # Main execution block
 if __name__ == '__main__':
-    files = [f'test{i}.txt' for i in range(1, 8)]  # List files from test1.txt to test7.txt
+    files = [f'test{i}.txt' for i in range(1, 40)]  # List files from test1.txt to test40.txt
     plot_data(files)
