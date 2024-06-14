@@ -16,7 +16,7 @@ def parse_data(file_path):
                 print("Skipping a line due to missing data:", line)
     return duty_cycle, tps1_readings, tps2_readings
 
-def generate_lookup_table(duty_cycle, avg_tps1, avg_tps2, filename='lookup_table.c'):
+def generate_lookup_table(duty_cycle, avg_tps1, avg_tps2, filename='c_code/lookup_table.c'):
     with open(filename, 'w') as file:
         file.write('/* Lookup Table Generated from Average TPS Readings */\n')
         file.write('#include "lookup_table.h"\n\n')
