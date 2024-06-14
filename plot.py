@@ -16,29 +16,27 @@ def parse_data(file_path):
                 tps2_readings.append(int(parts[2].split(':')[-1]))
             else:
                 print("Skipping a line due to missing data:", line)
-            
+
     return duty_cycle, tps1_readings, tps2_readings
 
-
-def plot_data(duty_cycle, tps1_readings, tps2_readings):
+def plot_data(files):
     plt.figure(figsize=(12, 6))
 
-    # Plotting TPS1 and TPS2 readings on the same plot
-    plt.plot(duty_cycle, tps1_readings, marker='o', markersize=1, linestyle='-', color='b', label='TPS1 Readings')
-    plt.plot(duty_cycle, tps2_readings, marker='o', markersize=1, linestyle='-', color='r', label='TPS2 Readings')
-    
-    plt.title('Duty Cycle vs TPS Readings')
+    # Plot data from multiple files
+    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']  # Color for each file
+    for index, file_path in enumerate(files):
+        duty_cycle, tps1_readings, tps2_readings = parse_data(file_path)
+        plt.plot(duty_cycle, tps1_readings, marker='o', markersize=1, linestyle='-', color=colors[index % len(colors)], label=f'{file_path} - TPS1')
+        plt.plot(duty_cycle, tps2_readings, marker='o', markersize=1, linestyle='-', color=colors[index % len(colors)], label=f'{file_path} - TPS2', alpha=0.5)
+
+    plt.title('Duty Cycle vs TPS Readings Across Files')
     plt.xlabel('Duty Cycle')
     plt.ylabel('ADC Value')
-    plt.legend()  # This adds a legend to differentiate the lines
-
+    plt.legend(loc='upper left', fontsize='small')  # Adjust legend position and size
     plt.tight_layout()  # Ensure everything fits without overlapping
     plt.show()
 
-
 # Main execution block
 if __name__ == '__main__':
-    # Assume the file is located in the current working directory
-    file_path = 'test1.txt'
-    duty_cycle, tps1_readings, tps2_readings = parse_data(file_path)
-    plot_data(duty_cycle, tps1_readings, tps2_readings)
+    files = [f'test{i}.txt' for i in range(1, 8)]  # List files from test1.txt to test7.txt
+    plot_data(files)
