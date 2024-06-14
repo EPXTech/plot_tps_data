@@ -26,13 +26,12 @@ def plot_data(files):
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']  # Color for each file
     for index, file_path in enumerate(files):
         duty_cycle, tps1_readings, tps2_readings = parse_data(file_path)
-        plt.plot(duty_cycle, tps1_readings, marker='o', markersize=1, linestyle='-', color=colors[index % len(colors)], label=f'{file_path} - TPS1')
-        plt.plot(duty_cycle, tps2_readings, marker='o', markersize=1, linestyle='-', color=colors[index % len(colors)], label=f'{file_path} - TPS2', alpha=0.5)
+        plt.plot(duty_cycle, tps1_readings, marker='o', markersize=1, linestyle='-', color='r', label=f'{file_path} - TPS1')
+        plt.plot(duty_cycle, tps2_readings, marker='o', markersize=1, linestyle='-', color='b', label=f'{file_path} - TPS2', alpha=0.5)
 
     plt.title('Duty Cycle vs TPS Readings Across Files')
     plt.xlabel('Duty Cycle')
     plt.ylabel('ADC Value')
-    plt.legend(loc='upper left', fontsize='small')  # Adjust legend position and size
     plt.tight_layout()  # Ensure everything fits without overlapping
     plt.show()
 
