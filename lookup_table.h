@@ -1,12 +1,12 @@
 #ifndef LOOKUP_TABLE_H
 #define LOOKUP_TABLE_H
 
-extern float avg_tps1[];
-extern float avg_tps2[];
+extern float duty_cycle_values[];
+extern float avg_tps1_values[];
+extern float avg_tps2_values[];
+extern int duty_cycle_size;
 
-int get_tps1_size(void);
-int get_tps2_size(void);
-float get_avg_tps1(int index);
-float get_avg_tps2(int index);
+float get_avg_tps1_value(float duty);
+float get_avg_tps2_value(float duty);
 
 #endif // LOOKUP_TABLE_H
