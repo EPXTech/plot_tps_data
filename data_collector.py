@@ -18,7 +18,7 @@ def log_data_to_file(ser):
     initiate_pattern = 'Initiate Positive Test Sweep'
 
     try:
-        while file_number <= 40:
+        while file_number <= 5:
             line = ser.readline().decode('utf-8').strip()
             # Check if the line matches the required start
             if re.match(pattern, line):
@@ -27,7 +27,7 @@ def log_data_to_file(ser):
                     # Close the current file if open and start a new file
                     if file:
                         file.close()
-                    file_name = f"data/test{file_number}.txt"
+                    file_name = f"data/test_pos_neg_rev{file_number}.txt"
                     file = open(file_name, 'w')
                     file_number += 1
                     print(f"Started new log file: {file_name}")

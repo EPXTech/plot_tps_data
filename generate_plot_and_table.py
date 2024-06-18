@@ -70,5 +70,5 @@ def plot_data(files):
 
 # Main execution block
 if __name__ == '__main__':
-    files = [f'data/test{i}.txt' for i in range(1, 40)]
+    files = [f'data/test_pos_neg_rev{i}.txt' for i in range(1, 5)]
     plot_data(files)
